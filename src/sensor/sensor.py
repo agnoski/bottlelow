@@ -1,8 +1,5 @@
-import logging
+from worker import Worker
 
-class Sensor:
-    def __init__(self):
-        self.logger = logging.getLogger(self.__class__.__name__)
-
+class Sensor(Worker):
     def set_when_deactivated(self, fun):
         pass
