@@ -15,14 +15,7 @@ from frame.roi import ROI
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG, format='[%(asctime)s][%(levelname)s][%(name)s] %(message)s')
 
-    app = QApplication([])
-
-    window = MainWindow()
-    window.show()
-
-    sys.exit(app.exec_())
-
-    '''
+    controller = None
     mode = "Simulator"
     if mode == "Simulator":
 
@@ -30,13 +23,21 @@ if __name__ == '__main__':
         sensor = SensorSimulator()
         led = LedSimulator()
 
-        queue_size = 1
+        queue_size = 10
 
-        controller = Controller(video_stream, sensor, led, queue_size)
-        neural_net =  NeuralNet("weights/weight_gray_3.h5")
+        # TODO: Load from config
         roi = ROI(100, 20, 280, 40)
-        frame_processor = FrameProcessor(neural_net, roi)
-        controller.register(frame_processor.process)
+        controller = Controller(video_stream, sensor, led, roi, queue_size)
+        neural_net =  NeuralNet("weights/weight_gray_3.h5")
+
+        frame_processor = FrameProcessor(neural_net)
+        controller.register_processor(frame_processor.process)
         controller.start()
         logging.info("waiting")
-    '''
+
+    app = QApplication([])
+
+    window = MainWindow(controller)
+    window.show()
+
+    sys.exit(app.exec_())

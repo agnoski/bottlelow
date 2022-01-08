@@ -1,15 +1,19 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QSizePolicy, QPushButton, QHBoxLayout, QVBoxLayout
+from PyQt5.QtGui import QImage, QPixmap, QPainter, QPen
+from PyQt5.QtCore import Qt
 
 from .styles import Styles
 
 class ImageWidget(QWidget):
+    width, height = 360, 480
     def __init__(self, parent):
         super().__init__(parent)
 
-        image = QLabel()
-        image.setFixedSize(360,480) # (240, 320) x 1.5
-        image.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
-        image.setScaledContents(True)
+        self.image = QLabel()
+        self.image.setFixedSize(self.width, self.height) # (240, 320) x 1.5
+        self.image.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
+        self.image.setScaledContents(True)
+        self.image.setPixmap(QPixmap(self.width, self.height))
 
         def create_button(text, fun):
             button = QPushButton(text)
@@ -27,6 +31,19 @@ class ImageWidget(QWidget):
         btn_layout.addWidget(button_delete)
 
         main_layout = QVBoxLayout()
-        main_layout.addWidget(image)
+        main_layout.addWidget(self.image)
 
-        self.setLayout(btn_layout)
+        #self.setLayout(btn_layout)
+        self.setLayout(main_layout)
+
+    def update_image(self, frame):
+        image = frame.image
+        roi = frame.roi
+        height, width, _ = image.shape
+        self.qImg = QImage(image, width, height, QImage.Format_RGB888)
+        self.qpixmap = QPixmap(self.qImg)
+        self.painter = QPainter(self.qpixmap)
+        self.painter.setPen(QPen(Qt.red, 1, Qt.SolidLine))
+        self.painter.drawRect(roi.x0, roi.y0, roi.width, roi.height)
+        self.painter.end()
+        self.image.setPixmap(self.qpixmap)
