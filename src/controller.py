@@ -13,12 +13,13 @@ class Controller:
     WAIT_TIME_LED_ON = 0.1
     WAIT_TIME_LED_OFF = 0.5
 
-    def __init__(self, video_stream:VideoStream, sensor:Sensor, led:Led, roi:ROI, queue_size:int = 0) -> None:
+    def __init__(self, video_stream:VideoStream, sensor:Sensor, led:Led, roi:ROI, limits, queue_size:int = 0) -> None:
         self.logger = logging.getLogger(self.__class__.__name__)
         self.video_stream = video_stream
         self.led = led
         self.sensor = sensor
         self.roi = roi
+        self.limits = limits
         self.input_queue = Queue(queue_size)
         self.output_queue = Queue(queue_size)
 
@@ -45,6 +46,21 @@ class Controller:
     def set_roi(self, roi):
         self.roi = roi
 
+    def set_limits(self, limits):
+        self.limits = limits
+
+    def update_max_limit(self, val):
+        self.limits["y_max"] = self.limits["y_max"] + val
+        return self.limits
+
+    def update_min_limit(self, val):
+        self.limits["y_min"] = self.limits["y_min"] + val
+        return self.limits
+
+    def update_roi(self, val):
+        self.roi.x0 = self.roi.x0 + val
+        return self.roi
+
     def disable_sensor(self):
         self.sensor.set_when_deactivated(None)
 
@@ -69,7 +85,7 @@ class Controller:
     def process(self):
         while(self.started):
             image = self.input_queue.get()
-            frame = Frame(image, self.roi, {})
+            frame = Frame(image, self.roi, self.limits)
             self.logger.info("Processing new image")
             for processor in self.processors:
                 try:

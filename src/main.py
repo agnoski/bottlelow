@@ -27,7 +27,8 @@ if __name__ == '__main__':
 
         # TODO: Load from config
         roi = ROI(100, 20, 280, 40)
-        controller = Controller(video_stream, sensor, led, roi, queue_size)
+        limits = {"y_min": 100, "y_max": 80}
+        controller = Controller(video_stream, sensor, led, roi, limits, queue_size)
         neural_net =  NeuralNet("weights/weight_gray_3.h5")
 
         frame_processor = FrameProcessor(neural_net)
