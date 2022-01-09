@@ -38,9 +38,9 @@ class Controller:
 
     def close(self):
         self.started = False
+        self.input_queue.join()
+        self.output_queue.join()
         self.sensor.stop()
-        self.thread_publisher.join()
-        self.thread_processor.join()
 
     def set_roi(self, roi):
         self.roi = roi
@@ -77,13 +77,16 @@ class Controller:
                     self.output_queue.put_nowait(frame)
                 except Full:
                     self.logger.error("Failed to add frame. Output queue full")
+            self.input_queue.task_done()
         self.logger.info("Closing process controller...")
 
     def publish(self):
         while(self.started):
+            self.logger.info("Waiting new frame")
             frame = self.output_queue.get()
             self.logger.info("Publishing new frame")
             for publisher in self.publishers:
                 publisher(frame)
+            self.output_queue.task_done()
 
         self.logger.info("Closing publish controller...")
