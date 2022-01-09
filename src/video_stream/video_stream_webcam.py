@@ -1,10 +1,10 @@
-from video_stream.video_stream import VideoStream
 import cv2
-
-from threading import Thread, Lock
+from threading import Lock
+from video_stream.video_stream import VideoStream
 
 class WebcamVideoStream(VideoStream):
-    def __init__(self, src = 0, width = 320, height = 240) :
+    def __init__(self, src = 0, width = 320, height = 240):
+        super().__init__()
         self.stream = cv2.VideoCapture(src)
         self.stream.set(cv2.CAP_PROP_FRAME_WIDTH, width)
         self.stream.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
@@ -14,23 +14,14 @@ class WebcamVideoStream(VideoStream):
         self.started = False
         self.read_lock = Lock()
 
-    def start(self) :
-        if self.started :
-            print("already started!!")
-            return None
-        self.started = True
-        self.thread = Thread(target=self.loop, args=(), daemon=True)
-        self.thread.start()
-        return self
-
-    def loop(self) :
-        while self.started :
+    def run(self):
+        while self.started:
             (grabbed, frame) = self.stream.read()
             self.read_lock.acquire()
             self.grabbed, self.frame = grabbed, frame
             self.read_lock.release()
 
-    def read(self) :
+    def read(self):
         self.read_lock.acquire()
         frame = self.frame.copy()
         self.read_lock.release()
@@ -38,9 +29,5 @@ class WebcamVideoStream(VideoStream):
         frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
         return frame
 
-    def stop(self) :
-        self.started = False
-        self.thread.join()
-
-    def __exit__(self, exc_type, exc_value, traceback) :
+    def __exit__(self, exc_type, exc_value, traceback):
         self.stream.release()
