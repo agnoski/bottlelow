@@ -1,0 +1,18 @@
+application:
+  mode: Simulator
+controller:
+  limits:
+    y_max: 180
+    y_min: 220
+  queue_size: 100
+  roi:
+    height: 280
+    width: 40
+    x0: 100
+    y0: 20
+  wait_time_led_off: 0.5
+  wait_time_led_on: 0.1
+neural:
+  weights_file_path: weights/weight_gray_3.h5
+simulator:
+  images_folder_path: images/simulator
