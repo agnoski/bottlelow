@@ -8,17 +8,17 @@ class NeuralNet:
     def __init__(self, model_path):
         self.model = load_model(model_path)
 
-    def set_model(self, model_path):
+    def _set_model(self, model_path):
         self.model = load_model(model_path)
 
-    def __preprocess(self, frame):
+    def _preprocess(self, frame):
         frame = cvtColor(frame, cv2.COLOR_BGR2GRAY) #RGB2GRAY=6 ; BGR2GRAY=7
         frame = np.expand_dims(frame/255.0, axis=0)
         frame = np.expand_dims(frame, axis=3)
         return frame
     
     def predict(self, arr):
-        arr = self.__preprocess(arr)
+        arr = self._preprocess(arr)
         return self.model.predict(arr)
 
     '''
@@ -31,5 +31,5 @@ class NeuralNet:
         trainer.train(self.train_callbacks)
         model_name = 'weight_test.h5'
         path = trainer.save(model_name)
-        self.set_model(path)
+        self._set_model(path)
     '''

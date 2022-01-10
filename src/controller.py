@@ -28,7 +28,7 @@ class Controller:
     def start(self):
         self.logger.info("Controller starting...")
         self.video_stream.start()
-        self.sensor.set_when_deactivated(self.pipe)
+        self.sensor.set_when_deactivated(self._pipe)
         self.sensor.start()
         self.started = True
         self.thread_processor.start()
@@ -61,7 +61,7 @@ class Controller:
     def disable_sensor(self):
         self.sensor.set_when_deactivated(None)
 
-    def pipe(self):
+    def _pipe(self):
         self.logger.debug("Processing event")
         self.led.on()
         sleep(self.WAIT_TIME_LED_ON)
