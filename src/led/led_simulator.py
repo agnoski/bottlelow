@@ -1,5 +1,3 @@
-import logging
-
 from led.led import Led
 
 class LedSimulator(Led):

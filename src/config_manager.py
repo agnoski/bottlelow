@@ -1,5 +1,5 @@
-import yaml
 import logging
+import yaml
 
 class ConfigManager:
     def __init__(self, path):

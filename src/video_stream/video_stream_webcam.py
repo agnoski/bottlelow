@@ -1,6 +1,7 @@
-import cv2
 from threading import Lock
 from video_stream.video_stream import VideoStream
+
+import cv2
 
 class WebcamVideoStream(VideoStream):
     def __init__(self, src = 0, width = 320, height = 240):

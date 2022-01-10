@@ -1,19 +1,15 @@
-import logging
-from frame.roi import ROI
 from frame.frame import Frame
-
-from worker import Worker
-from video_stream.video_stream import VideoStream
-from led.led import Led
-from sensor.sensor import Sensor
-from time import sleep
 from queue import Full, Queue
+from time import sleep
+from worker import Worker
+
+import logging
 
 class Controller:
     WAIT_TIME_LED_ON = 0.1
     WAIT_TIME_LED_OFF = 0.5
 
-    def __init__(self, video_stream:VideoStream, sensor:Sensor, led:Led, roi:ROI, limits, queue_size:int = 0) -> None:
+    def __init__(self, video_stream, sensor, led, roi, limits, queue_size = 0):
         self.logger = logging.getLogger(self.__class__.__name__)
         self.video_stream = video_stream
         self.led = led
@@ -30,6 +26,7 @@ class Controller:
         self.thread_publisher = Worker(target=self.publish, name="Processor", args=(), daemon=True)
 
     def start(self):
+        self.logger.info("Controller starting...")
         self.video_stream.start()
         self.sensor.set_when_deactivated(self.pipe)
         self.sensor.start()
@@ -86,7 +83,7 @@ class Controller:
         while(self.started):
             image = self.input_queue.get()
             frame = Frame(image, self.roi, self.limits)
-            self.logger.info("Processing new image")
+            self.logger.debug("Processing new image")
             for processor in self.processors:
                 try:
                     frame = processor(frame)
@@ -98,9 +95,9 @@ class Controller:
 
     def publish(self):
         while(self.started):
-            self.logger.info("Waiting new frame")
+            self.logger.debug("Waiting new frame")
             frame = self.output_queue.get()
-            self.logger.info("Publishing new frame")
+            self.logger.debug("Publishing new frame")
             for publisher in self.publishers:
                 publisher(frame)
             self.output_queue.task_done()

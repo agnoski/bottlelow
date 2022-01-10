@@ -1,11 +1,11 @@
-from tensorflow.keras.models import load_model
-import cv2
 from cv2 import cvtColor
+from tensorflow.keras.models import load_model
+
+import cv2
 import numpy as np
 
 class NeuralNet:
-    def __init__(self, model_path:str):
-        self.path_dir = 'weights'
+    def __init__(self, model_path):
         self.model = load_model(model_path)
 
     def set_model(self, model_path):

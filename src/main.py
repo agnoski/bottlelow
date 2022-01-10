@@ -1,17 +1,16 @@
-import logging
-import sys
-
-from PyQt5.QtWidgets import QApplication
 from config_manager import ConfigManager
-from ui.main_window import MainWindow
 from controller import Controller
-from sensor.sensor_simulator import SensorSimulator
 from frame.frame_processor import FrameProcessor
-from video_stream.video_stream_simulator import VideoStreamSimulator
+from frame.roi import ROI
 from led.led_simulator import LedSimulator
 from neural.neural_net import NeuralNet
-from frame.roi import ROI
-from config_manager import ConfigManager
+from PyQt5.QtWidgets import QApplication
+from sensor.sensor_simulator import SensorSimulator
+from ui.main_window import MainWindow
+from video_stream.video_stream_simulator import VideoStreamSimulator
+
+import logging
+import sys
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG, format='[%(asctime)s][%(levelname)s][%(name)s] %(message)s')

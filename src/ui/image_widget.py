@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QSizePolicy, QPushButton, QHBoxLayout, QVBoxLayout
 from PyQt5.QtGui import QImage, QPixmap, QPainter, QPen
 from PyQt5.QtCore import Qt
-
 from .styles import Styles
 
 class ImageWidget(QWidget):

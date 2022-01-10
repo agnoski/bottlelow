@@ -1,4 +1,3 @@
-from frame.frame import Frame
 from neural.neural_netUtils import NeuralNetUtils
 
 class FrameProcessor:

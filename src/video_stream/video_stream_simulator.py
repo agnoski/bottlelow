@@ -1,7 +1,8 @@
-import os, os.path
 from PIL import Image
-import numpy as np
 from video_stream.video_stream import VideoStream
+
+import numpy as np
+import os, os.path
 
 class VideoStreamSimulator(VideoStream):
     def __init__(self, path):
