@@ -1,5 +1,6 @@
-import logging
 from threading import Thread, Lock
+
+import logging
 
 class Worker(Thread):
     thread_counter_lock = Lock()
