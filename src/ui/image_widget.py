@@ -11,6 +11,7 @@ class ImageWidget(QWidget):
         self.frame_image = None
         self.roi = None
         self.limits = None
+        self.levels = None
 
         self.image = QLabel()
         self.image.setFixedSize(self.width, self.height) # (240, 320) x 1.5
@@ -51,6 +52,7 @@ class ImageWidget(QWidget):
         self.frame_image = frame.image
         self.roi = frame.roi
         self.limits = frame.limits
+        self.levels = frame.levels
         self.update()
 
     def update(self):
@@ -59,8 +61,18 @@ class ImageWidget(QWidget):
         self.qpixmap = QPixmap(self.qImg)
         self.painter = QPainter(self.qpixmap)
         self.painter.setPen(QPen(Qt.red, 1, Qt.SolidLine))
+
+        # Draw roi
         self.painter.drawRect(self.roi.x0, self.roi.y0, self.roi.width, self.roi.height)
+
+        # Draw limits
         self.painter.drawLine(self.roi.x0, self.limits["y_min"], self.roi.x0 + self.roi.width, self.limits["y_min"])
         self.painter.drawLine(self.roi.x0, self.limits["y_max"], self.roi.x0 + self.roi.width, self.limits["y_max"])
+
+        # Draw levels
+        self.painter.setPen(QPen(Qt.blue, 1, Qt.SolidLine))
+        for level in self.levels:
+            self.painter.drawLine(self.roi.x0, level["center"], self.roi.x0 + self.roi.width, level["center"])
+
         self.painter.end()
         self.image.setPixmap(self.qpixmap)
