@@ -13,6 +13,6 @@ controller:
   wait_time_led_off: 0.5
   wait_time_led_on: 0.1
 neural:
-  weights_file_path: weights/weight_gray_3.h5
+  weights_file_path: resources/weights/weight_gray_3.h5
 simulator:
-  images_folder_path: images/simulator
+  images_folder_path: resources/images/simulator
