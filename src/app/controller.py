@@ -1,7 +1,7 @@
-from frame.frame import Frame
+from core.frame.frame import Frame
+from core.worker import Worker
 from queue import Full, Queue
 from time import sleep
-from worker import Worker
 
 import logging
 

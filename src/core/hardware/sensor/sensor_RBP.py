@@ -1,5 +1,5 @@
+from core.hardware.sensor.sensor import Sensor
 from gpiozero import BUTTON
-from sensor.sensor import Sensor
 
 class SensorRBP(Sensor):
     def __init__(self, sensor_id):

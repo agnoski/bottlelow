@@ -1,4 +1,4 @@
-from led.led import Led
+from core.hardware.led.led import Led
 
 class LedSimulator(Led):
     def on(self):

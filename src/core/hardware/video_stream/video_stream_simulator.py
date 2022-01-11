@@ -1,5 +1,5 @@
+from core.hardware.video_stream.video_stream import VideoStream
 from PIL import Image
-from video_stream.video_stream import VideoStream
 
 import numpy as np
 import os, os.path

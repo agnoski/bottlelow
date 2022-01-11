@@ -1,4 +1,4 @@
-from sensor.sensor import Sensor
+from core.hardware.sensor.sensor import Sensor
 from time import sleep
 
 class SensorSimulator(Sensor):

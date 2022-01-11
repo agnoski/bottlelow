@@ -1,13 +1,13 @@
-from config_manager import ConfigManager
-from controller import Controller
-from frame.frame_processor import FrameProcessor
-from frame.roi import ROI
-from led.led_simulator import LedSimulator
-from neural.neural_net import NeuralNet
+from app.config_manager import ConfigManager
+from app.controller import Controller
+from core.frame.frame_processor import FrameProcessor
+from core.frame.roi import ROI
+from core.hardware.led.led_simulator import LedSimulator
+from core.hardware.sensor.sensor_simulator import SensorSimulator
+from core.hardware.video_stream.video_stream_simulator import VideoStreamSimulator
+from core.neural.neural_net import NeuralNet
 from PyQt5.QtWidgets import QApplication
-from sensor.sensor_simulator import SensorSimulator
 from ui.main_window import MainWindow
-from video_stream.video_stream_simulator import VideoStreamSimulator
 
 import logging
 import sys

@@ -1,5 +1,5 @@
+from core.hardware.video_stream.video_stream import VideoStream
 from threading import Lock
-from video_stream.video_stream import VideoStream
 
 import cv2
 

@@ -1,4 +1,4 @@
-from neural.neural_netUtils import NeuralNetUtils
+from core.neural.neural_netUtils import NeuralNetUtils
 
 class FrameProcessor:
     def __init__(self, neuralNet):
