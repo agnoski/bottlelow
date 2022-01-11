@@ -23,7 +23,7 @@ class Controller:
         self.processors = []
         self.publishers = []
         self.thread_processor = Worker(target=self.process, name="Processor", args=(), daemon=True)
-        self.thread_publisher = Worker(target=self.publish, name="Processor", args=(), daemon=True)
+        self.thread_publisher = Worker(target=self.publish, name="Publisher", args=(), daemon=True)
 
     def start(self):
         self.logger.info("Controller starting...")
