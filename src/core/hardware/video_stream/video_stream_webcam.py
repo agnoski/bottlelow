@@ -3,7 +3,7 @@ from threading import Lock
 
 import cv2
 
-class WebcamVideoStream(VideoStream):
+class VideoStreamWebcam(VideoStream):
     def __init__(self, src = 0, width = 320, height = 240):
         super().__init__()
         self.stream = cv2.VideoCapture(src)

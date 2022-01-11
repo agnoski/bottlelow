@@ -59,7 +59,7 @@ class App:
         led = LedRBP(pins_config["flash"])
 
         cam_config = rbp_config["cam"]
-        video_stream = WebcamVideoStream(cam_config["src"], cam_config["width"], cam_config["height"])
+        video_stream = VideoStreamWebcam(cam_config["src"], cam_config["width"], cam_config["height"])
 
         return Hardware(sensor, video_stream, led)
 
