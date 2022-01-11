@@ -2,7 +2,7 @@ from core.hardware.led.led import Led
 
 class LedSimulator(Led):
     def on(self):
-        self.logger.info("Led Simulator ON")
+        self.logger.debug("Led Simulator ON")
 
     def off(self):
-        self.logger.info("Led Simulator OFF")
+        self.logger.debug("Led Simulator OFF")
