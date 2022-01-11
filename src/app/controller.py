@@ -9,11 +9,11 @@ class Controller:
     WAIT_TIME_LED_ON = 0.1
     WAIT_TIME_LED_OFF = 0.5
 
-    def __init__(self, video_stream, sensor, led, roi, limits, queue_size = 0):
+    def __init__(self, hardware, roi, limits, queue_size = 0):
         self.logger = logging.getLogger(self.__class__.__name__)
-        self.video_stream = video_stream
-        self.led = led
-        self.sensor = sensor
+        self.sensor = hardware.sensor
+        self.video_stream = hardware.video_stream
+        self.led = hardware.led
         self.roi = roi
         self.limits = limits
         self.input_queue = Queue(queue_size)
