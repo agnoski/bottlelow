@@ -41,12 +41,27 @@ class App:
 
         hardware = None
         if mode == "Simulator":
-            simulator_config = hardware_config["simulator"]
-            sensor = SensorSimulator()
-            video_stream = VideoStreamSimulator(simulator_config["images_folder_path"])
-            led = LedSimulator()
-            hardware = Hardware(sensor, video_stream, led)
+            hardware = self._init_hardware_simulator(hardware_config["simulator"])
+        elif mode == "RBP":
+            hardware = self._init_hardware_rbp(hardware_config["rbp"])
+
         return hardware
+
+    def _init_hardware_simulator(self, simulator_config):
+        sensor = SensorSimulator()
+        video_stream = VideoStreamSimulator(simulator_config["images_folder_path"])
+        led = LedSimulator()
+        return Hardware(sensor, video_stream, led)
+
+    def _init_hardware_rbp(self, rbp_config):
+        pins_config = rbp_config["pins"]
+        sensor = SensorRBP(pins_config["sensor"])
+        led = LedRBP(pins_config["flash"])
+
+        cam_config = rbp_config["cam"]
+        video_stream = WebcamVideoStream(cam_config["src"], cam_config["width"], cam_config["height"])
+
+        return Hardware(sensor, video_stream, led)
 
     def _init_controller(self, hardware, controller_config):
         self.logger.info("Init controller...")

@@ -12,8 +12,16 @@ controller:
     y0: 20
   wait_time_led_off: 0.5
   wait_time_led_on: 0.1
-neural:
-  weights_file_path: resources/weights/weight_gray_3.h5
 hardware:
+  rbp:
+    cam:
+      height: 240
+      src: 0
+      width: 320
+    pins:
+      flash: 19
+      sensor: 26
   simulator:
     images_folder_path: resources/images/simulator
+neural:
+  weights_file_path: resources/weights/weight_gray_3.h5

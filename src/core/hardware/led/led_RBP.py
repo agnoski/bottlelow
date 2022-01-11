@@ -1,5 +1,5 @@
 from gpiozero import LED
-from led.led import Led
+from core.hardware.led.led import Led
 
 class LedRBP(Led.Led):
     def __init__(self, led_id = 19):
