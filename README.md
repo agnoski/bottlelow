@@ -13,11 +13,6 @@ Connect to the container with:
 docker exec -it bottlelow-app-1 sh
 ```
 
-Install Python dependencies dependencies:
-```
-pip install src/requirements.txt
-```
-
 Run the program:
 ```
 python src/main.py
