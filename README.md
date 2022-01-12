@@ -1,22 +1,34 @@
 ## Bottlelow
 
-A bottle quality checker
+A wine-bottle wine-level quality checker
 
-### Init
-Launch a container:
+### Development
+Build Docker image and launch the development container:
 ```
 docker compose up
 ```
 
-Connect with:
+Connect to the container with:
 ```
 docker exec -it bottlelow-app-1 sh
 ```
 
-For MacOS
+Install Python dependencies dependencies:
+```
+pip install src/requirements.txt
+```
+
+Run the program:
+```
+python src/main.py
+```
+
+#### Only for MacOS
+In order to render the GUI, the followind steps are also necessary before running the program:
+
 * Install XQuartz
-* Enable "Allow connections from network clients" option
-* Run:
+* From preferences, enable `Allow connections from network clients` option
+* Run command:
 ```
 xhost + 127.0.0.1
 ```
