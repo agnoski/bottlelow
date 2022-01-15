@@ -3,10 +3,12 @@ from tensorflow.keras.models import load_model
 
 import cv2
 import numpy as np
+import os
 
 class NeuralNet:
     def __init__(self, model_path):
-        self.model = load_model(model_path)
+        path = os.path.abspath(os.path.join(os.path.dirname('__file__'), 'src', model_path))
+        self.model = load_model(path)
 
     def _set_model(self, model_path):
         self.model = load_model(model_path)

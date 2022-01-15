@@ -9,7 +9,7 @@ class VideoStreamSimulator(VideoStream):
         super().__init__()
         self.images = []
         self.current_image_idx = -1
-        self.images_folder_path = path
+        self.images_folder_path = os.path.abspath(os.path.join(os.path.dirname('__file__'), 'src', path))
 
         # load images from folder and set current index to 0
         self._load_images()

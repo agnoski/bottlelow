@@ -4,8 +4,11 @@ from core.frame.frame_processor import FrameProcessor
 from core.frame.roi import ROI
 from core.hardware.hardware import Hardware
 from core.hardware.led.led_simulator import LedSimulator
+from core.hardware.led.led_RBP import LedRBP
 from core.hardware.sensor.sensor_simulator import SensorSimulator
+from core.hardware.sensor.sensor_RBP import SensorRBP
 from core.hardware.video_stream.video_stream_simulator import VideoStreamSimulator
+from core.hardware.video_stream.video_stream_webcam import VideoStreamWebcam
 from core.neural.neural_net import NeuralNet
 
 import logging

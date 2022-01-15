@@ -1,5 +1,5 @@
 application:
-  mode: Simulator
+  mode: RBP #Simulator
 controller:
   limits:
     y_max: 180

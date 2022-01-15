@@ -1,10 +1,11 @@
 import logging
 import yaml
+import os
 
 class ConfigManager:
     def __init__(self, path):
         self.logger = logging.getLogger(self.__class__.__name__)
-        self.path = path
+        self.path = os.path.abspath(os.path.join(os.path.dirname('__file__'), 'src', path))
         with open(self.path, "r") as file:
             try:
                 self.config = yaml.safe_load(file)
