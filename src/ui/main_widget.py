@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget
 from .image_widget import ImageWidget
 from .control_widget import ControlWidget
-from .runmode_params_widget import RunmodeParamsWidget
+from .run_mode.run_widget import RunWidget
 
 class MainWidget(QWidget):
     def __init__(self, parent, controller):
@@ -17,7 +17,7 @@ class MainWidget(QWidget):
         control_state = ControlWidget(parent=self)
         control_state.move(390,10)
 
-        control_roi = RunmodeParamsWidget(parent=self)
+        control_roi = RunWidget(parent=self)
         control_roi.move(390,60)
 
         def update_max_limit(value):
