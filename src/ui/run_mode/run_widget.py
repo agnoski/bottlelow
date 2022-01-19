@@ -16,8 +16,11 @@ class RunWidget(QWidget, Ui_runmode_widget):
 
         #init Ui_runmode_widget
         self.setupUi(parent)
+        self.stackedWidget.setCurrentIndex(0)
 
         self.logger = logging.getLogger(self.__class__.__name__)
+
+        self._connectSignalSlot()
 
     def _connectSignalSlot(self):
         self.lev_max_plus.clicked.connect(lambda: self._update_max_limit(-self.VAL_INCREASE))
@@ -36,6 +39,7 @@ class RunWidget(QWidget, Ui_runmode_widget):
         self.signal_min_limit.emit(val)
     
     def _show_settings(self):
+        self.logger.info("Show settings")
         self.stackedWidget.setCurrentIndex(1)
 
     def _save_settings(self):

@@ -19,6 +19,8 @@ class MainWidget(QWidget):
 
         control_roi = RunWidget(parent=self)
         control_roi.move(390,60)
+        #TODO capire perché serve questo...
+        control_roi.stackedWidget.move(390,60) 
 
         def update_max_limit(value):
             limits = self.controller.update_max_limit(value)

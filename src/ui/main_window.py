@@ -20,5 +20,5 @@ class MainWindow(QMainWindow):
         self.setWindowTitle(self.title)
         widget = MainWidget(parent=self, controller=self.controller)
         self.setCentralWidget(widget)
-        self.setFixedSize(1024, 500)
+        self.setFixedSize(1024, 600)
         #self.showFullScreen()

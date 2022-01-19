@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'run_widgetvhyflR.ui'
+## Form generated from reading UI file 'run_widgetzDRcRc.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -14,13 +14,13 @@ from PyQt5.QtWidgets import *
 
 
 class Ui_runmode_widget(object):
-    def setupUi(self, runmode_params_widget):
-        if not runmode_params_widget.objectName():
-            runmode_params_widget.setObjectName(u"runmode_params_widget")
-        runmode_params_widget.resize(631, 481)
-        self.stackedWidget = QStackedWidget(runmode_params_widget)
+    def setupUi(self, runmode_widget):
+        if not runmode_widget.objectName():
+            runmode_widget.setObjectName(u"runmode_widget")
+        runmode_widget.resize(631, 481)
+        self.stackedWidget = QStackedWidget(runmode_widget)
         self.stackedWidget.setObjectName(u"stackedWidget")
-        self.stackedWidget.setGeometry(QRect(-1, -1, 631, 481))
+        self.stackedWidget.setGeometry(QRect(0, -1, 631, 481))
         self.page = QWidget()
         self.page.setObjectName(u"page")
         self.settingButton = QPushButton(self.page)
@@ -149,39 +149,39 @@ class Ui_runmode_widget(object):
         self.groupBox_5.setGeometry(QRect(240, 260, 361, 161))
         self.stackedWidget.addWidget(self.page_2)
 
-        self.retranslateUi(runmode_params_widget)
+        self.retranslateUi(runmode_widget)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
 
 
-        QMetaObject.connectSlotsByName(runmode_params_widget)
+        QMetaObject.connectSlotsByName(runmode_widget)
     # setupUi
 
-    def retranslateUi(self, runmode_params_widget):
-        runmode_params_widget.setWindowTitle(QCoreApplication.translate("runmode_params_widget", u"Form", None))
-        self.settingButton.setText(QCoreApplication.translate("runmode_params_widget", u"Settings", None))
-        self.label_6.setText(QCoreApplication.translate("runmode_params_widget", u"ETHEL SPUM V1", None))
-        self.groupBox.setTitle(QCoreApplication.translate("runmode_params_widget", u"Statistics", None))
+    def retranslateUi(self, runmode_widget):
+        runmode_widget.setWindowTitle(QCoreApplication.translate("runmode_widget", u"Form", None))
+        self.settingButton.setText(QCoreApplication.translate("runmode_widget", u"Settings", None))
+        self.label_6.setText(QCoreApplication.translate("runmode_widget", u"ETHEL SPUM V1", None))
+        self.groupBox.setTitle(QCoreApplication.translate("runmode_widget", u"Statistics", None))
         self.groupBox_2.setTitle("")
-        self.pushButton.setText(QCoreApplication.translate("runmode_params_widget", u"Reset", None))
-        self.label.setText(QCoreApplication.translate("runmode_params_widget", u"Counter", None))
-        self.label_2.setText(QCoreApplication.translate("runmode_params_widget", u"Speed", None))
-        self.label_3.setText(QCoreApplication.translate("runmode_params_widget", u"Average speed", None))
-        self.label_4.setText(QCoreApplication.translate("runmode_params_widget", u"Bottles/hour", None))
-        self.label_5.setText(QCoreApplication.translate("runmode_params_widget", u"Bottles/hour", None))
-        self.newSettingButton.setText(QCoreApplication.translate("runmode_params_widget", u"New Setting", None))
-        self.label_7.setText(QCoreApplication.translate("runmode_params_widget", u"Setting", None))
-        self.saveButton.setText(QCoreApplication.translate("runmode_params_widget", u"Save", None))
-        self.LevMax.setTitle(QCoreApplication.translate("runmode_params_widget", u"Lev Max", None))
-        self.lev_max_plus.setText(QCoreApplication.translate("runmode_params_widget", u"+", None))
-        self.lev_max_minus.setText(QCoreApplication.translate("runmode_params_widget", u"-", None))
-        self.groupBox_3.setTitle(QCoreApplication.translate("runmode_params_widget", u"Model", None))
-        self.modelInfo.setText(QCoreApplication.translate("runmode_params_widget", u"Model info", None))
-        self.groupBox_4.setTitle(QCoreApplication.translate("runmode_params_widget", u"LED", None))
-        self.cancelButton.setText(QCoreApplication.translate("runmode_params_widget", u"Cancel", None))
-        self.LevMax_3.setTitle(QCoreApplication.translate("runmode_params_widget", u"Lev Min", None))
-        self.lev_min_plus.setText(QCoreApplication.translate("runmode_params_widget", u"+", None))
-        self.lev_min_minus.setText(QCoreApplication.translate("runmode_params_widget", u"-", None))
-        self.groupBox_5.setTitle(QCoreApplication.translate("runmode_params_widget", u"Statistics", None))
+        self.pushButton.setText(QCoreApplication.translate("runmode_widget", u"Reset", None))
+        self.label.setText(QCoreApplication.translate("runmode_widget", u"Counter", None))
+        self.label_2.setText(QCoreApplication.translate("runmode_widget", u"Speed", None))
+        self.label_3.setText(QCoreApplication.translate("runmode_widget", u"Average speed", None))
+        self.label_4.setText(QCoreApplication.translate("runmode_widget", u"Bottles/hour", None))
+        self.label_5.setText(QCoreApplication.translate("runmode_widget", u"Bottles/hour", None))
+        self.newSettingButton.setText(QCoreApplication.translate("runmode_widget", u"New Setting", None))
+        self.label_7.setText(QCoreApplication.translate("runmode_widget", u"Setting", None))
+        self.saveButton.setText(QCoreApplication.translate("runmode_widget", u"Save", None))
+        self.LevMax.setTitle(QCoreApplication.translate("runmode_widget", u"Lev Max", None))
+        self.lev_max_plus.setText(QCoreApplication.translate("runmode_widget", u"+", None))
+        self.lev_max_minus.setText(QCoreApplication.translate("runmode_widget", u"-", None))
+        self.groupBox_3.setTitle(QCoreApplication.translate("runmode_widget", u"Model", None))
+        self.modelInfo.setText(QCoreApplication.translate("runmode_widget", u"Model info", None))
+        self.groupBox_4.setTitle(QCoreApplication.translate("runmode_widget", u"LED", None))
+        self.cancelButton.setText(QCoreApplication.translate("runmode_widget", u"Cancel", None))
+        self.LevMax_3.setTitle(QCoreApplication.translate("runmode_widget", u"Lev Min", None))
+        self.lev_min_plus.setText(QCoreApplication.translate("runmode_widget", u"+", None))
+        self.lev_min_minus.setText(QCoreApplication.translate("runmode_widget", u"-", None))
+        self.groupBox_5.setTitle(QCoreApplication.translate("runmode_widget", u"Statistics", None))
     # retranslateUi
 
